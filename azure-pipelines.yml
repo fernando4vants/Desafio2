@@ -26,6 +26,10 @@ steps:
   displayName: 'Run tests on Chrome'
   continueOnError: true
 
+- script: npm run cy:run:firefox
+  displayName: 'Run tests on Firefox'
+  continueOnError: true
+
 - task: PublishTestResults@2
   displayName: 'Exibindo resultados dos testes'
   inputs:
