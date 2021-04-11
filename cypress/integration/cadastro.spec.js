@@ -1,11 +1,19 @@
 const faker = require('faker')
 
+import cadastro from '../support/pages/cadastro'
+import Routes from '../support/routes'
+
 describe('Cadastro', () => {
+    
     it('Cadastrar um novo usuário', () => {
-        cy.visit('register');
-        cy.get('input[ng-model*=username').type(faker.name.firstName() + faker.name.lastName())
-        cy.get('input[ng-model*=email').type(faker.internet.email())
-        cy.get('input[ng-model*=password').type(12345678)
-        cy.get('button.btn-primary').click()
+        Routes.initCreateUser()
+        // Ação
+        cadastro.acessarFomularioCreateUser()
+        cadastro.cadastrarNovoUusuario()
+        cadastro.submeterDadosDoNovoUsuario()
+        //verificação
+        cadastro.verficarSeUsuarioFoiCriadoComSucesso()
+    
+        
     });
 });
